@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jisho/network_helper.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +13,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    getWordData();
   }
 
   @override
