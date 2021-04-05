@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jisho/ui/app_entry.dart';
 
 void main() {
-  runApp(MyApp());
-}
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  //TODO: initialize Hive
+  runApp(AppEntry());
 }
