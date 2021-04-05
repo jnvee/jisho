@@ -6,9 +6,14 @@ import 'package:jisho/network/service_response.dart';
 class RestApiService extends IClient{
 
   @override
-  Future<MappedNetworkServiceResponse<T>> getAsync<T>(String url, Map<String, dynamic> queryParams) async {
-    Response response = await Dio().get(url, queryParameters: queryParams);
-
+  Future<MappedNetworkServiceResponse<T>> getAsync<T>(String url, String headerKey, String headerValue) async {
+    print(url);
+    Dio dio = Dio();
+    dio.options.headers[headerKey] = headerValue;
+    print(dio.options.headers);
+    Response response = await dio.get("https://owlbot.info/api/v4/dictionary/owl");
+    print(response);
+    print(url);
     return await processResponse<T>(response);
   }
 

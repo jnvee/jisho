@@ -13,11 +13,11 @@ class SearchWordError extends SearchWordState{
   }
 }
 
-class SearchWordDefinition extends SearchWordState{
+class WordDefFoundState extends SearchWordState{
   final WordDefinition wordDefinition;
-  SearchWordDefinition(this.wordDefinition);
+  WordDefFoundState(this.wordDefinition);
 
-  SearchWordDefinition copyWith(WordDefinition wordDefinition){
-    return SearchWordDefinition(wordDefinition);
+  WordDefFoundState copyWith(WordDefinition wordDefinition){
+    return WordDefFoundState(wordDefinition);
   }
 }

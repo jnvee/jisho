@@ -4,7 +4,7 @@ import 'package:jisho/bloc/search_word_state.dart';
 
 class SearchWordBloc extends Bloc<SearchWordEvent, SearchWordState>{
 
-  SearchWordBloc(SearchWordState initialState) : super(initialState);
+  SearchWordBloc({SearchWordState initialState}) : super(initialState);
 
   @override
   Stream<SearchWordState> mapEventToState(SearchWordEvent event) async* {

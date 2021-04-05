@@ -8,22 +8,21 @@ abstract class SearchWordEvent{
   Future<SearchWordState> applyAsync({SearchWordState currentState, bloc});
 }
 
-class WordDefEvent extends SearchWordEvent{
+class SearchWordDefEvent extends SearchWordEvent{
   final ApiMethods _apiMethods = GetWord();
   final String word;
 
-  WordDefEvent(this.word);
+  SearchWordDefEvent(this.word);
 
   @override
   Future<SearchWordState> applyAsync({SearchWordState currentState, bloc}) async {
     try{
+
         WordDefinition wordDefinition = await _apiMethods.getWordDefinition(
             "${ApiUrl.BASE_URL}/$word",
-            {
-              "Authorization" : "Token ${ApiKey.KEY}"
-            });
+             "Authorization", "Token ${ApiKey.KEY}");
 
-        return SearchWordDefinition(wordDefinition);
+        return WordDefFoundState(wordDefinition);
     } catch (error, stacktrace){
       return SearchWordError(error);
     }
