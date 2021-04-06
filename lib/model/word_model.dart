@@ -1,6 +1,6 @@
 
-class Meaning {
-  Meaning(
+class WordDefinition {
+  WordDefinition(
       {this.wordtype,
       this.worddefinition,
       this.wordexample,
@@ -16,8 +16,8 @@ class Meaning {
   String word;
   String wordpronunciation;
 
-  factory Meaning.fromJson(Map<String, dynamic> parsedJson) {
-    return Meaning(
+  factory WordDefinition.fromJson(Map<String, dynamic> parsedJson) {
+    return WordDefinition(
       wordtype: parsedJson['definitions']['type'],
       worddefinition: parsedJson['definitions']['definition'],
       wordexample: parsedJson['definitions']['example'],
