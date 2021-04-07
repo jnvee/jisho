@@ -35,7 +35,7 @@ class WordSearch extends SearchDelegate<WordDefinition>{
           return Text(state.errorMessage);
         }
         if(state is WordDefFoundState){
-          return Text(state.wordDefinition.word);
+          return Text(state.wordDefinition.definitions.first.definition);
         } else {
           return CircularProgressIndicator();
         }
