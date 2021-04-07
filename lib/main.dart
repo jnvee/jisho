@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:jisho/ui/app_entry.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:jisho/model/bookmark_words.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  final documentDirectory = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(documentDirectory.path);
+  Hive.registerAdapter(BookmarkWordsAdapter());
+  runApp(AppEntry());
 }
