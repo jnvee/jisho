@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jisho/bloc/search_word_bloc.dart';
 import 'package:jisho/bloc/search_word_event.dart';
 import 'package:jisho/bloc/search_word_state.dart';
+import 'package:jisho/model/word_model.dart';
+import 'package:jisho/ui/word_search.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -21,18 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<SearchWordBloc, SearchWordState>(
-        bloc: _searchWordBloc,
-        builder: (BuildContext context, state){
-          if(state is SearchWordError){
-            return Text(state.errorMessage.toString());
-          }
-          if(state is WordDefFoundState){
-            return Text(state.wordDefinition.word);
-          }
-          return null;
-        },
+      appBar: AppBar(
+        title: Text("Jisho"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search_outlined),
+            onPressed: () async {
+              WordDefinition selectedWord = await showSearch(
+                  context: context,
+                  delegate: WordSearch(_searchWordBloc)
+              );
+            },
+          )
+        ],
       ),
+      body: Container()
     );
   }
 }
