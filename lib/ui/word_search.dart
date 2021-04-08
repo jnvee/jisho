@@ -4,6 +4,7 @@ import 'package:jisho/bloc/search_word_bloc.dart';
 import 'package:jisho/bloc/search_word_event.dart';
 import 'package:jisho/bloc/search_word_state.dart';
 import 'package:jisho/model/word_model.dart';
+import 'package:jisho/ui/definition_widget.dart';
 
 class WordSearch extends SearchDelegate<WordDefinition>{
   final _bloc;
@@ -19,6 +20,7 @@ class WordSearch extends SearchDelegate<WordDefinition>{
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
+        _bloc.
         close(context, null);
       }
     );
@@ -35,7 +37,7 @@ class WordSearch extends SearchDelegate<WordDefinition>{
           return Text(state.errorMessage);
         }
         if(state is WordDefFoundState){
-          return Text(state.wordDefinition.definitions.first.definition);
+          return DefinitionWidget(wordDefinition: state.wordDefinition);
         } else {
           return CircularProgressIndicator();
         }
