@@ -15,9 +15,8 @@ class GetWord extends ApiMethods{
 
   @override
   Future<WordDefinition> getWordDefinition(String url, String headerKey, String headerValue) async {
-    print("in here");
-    print(url);
-    var result = await _iClient.getAsync(url, headerKey, headerValue);
+
+    var result = await _iClient.getAsync(url: url, headerKey: headerKey, headerValue: headerValue);
     if(result.networkServiceResponse.success){
       WordDefinition wordDefinition = WordDefinition.fromJson(result.mappedResult);
       return wordDefinition;

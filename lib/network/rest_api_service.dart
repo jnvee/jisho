@@ -6,7 +6,7 @@ import 'package:jisho/network/service_response.dart';
 class RestApiService extends IClient{
 
   @override
-  Future<MappedNetworkServiceResponse<T>> getAsync<T>(String url, String headerKey, String headerValue) async {
+  Future<MappedNetworkServiceResponse<T>> getAsync<T>({String url, String headerKey, String headerValue}) async {
     Dio dio = Dio();
     dio.options.headers[headerKey] = headerValue;
     print(dio.options.headers);
